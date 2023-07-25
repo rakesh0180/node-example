@@ -1,8 +1,20 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const app = express();
 //use to read incoming json/data
 app.use(express.json());
-const port = 8080;
+const port = 3055;
+
+//establish connection to database
+
+mongoose
+  .connect("mongodb://localhost:27017/july-2023")
+  .then((result) => {
+    console.log("connected to db");
+  })
+  .catch((err) => {
+    console.log("error " + err);
+  });
 
 const customers = [
   { id: 1, name: "ABC" },
